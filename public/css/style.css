@@ -1,0 +1,30 @@
+* {
+  margin: 0 0 0 10px 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+html {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Flag_of_Scotland.svg/2000px-Flag_of_Scotland.svg.png');
+}
+
+body {
+text-align: center;
+font-family: sans-serif;
+}
+
+.munro{
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 200px;
+  height: 200px;
+  font-size: 1em;
+  font-weight: bold;
+}

@@ -11,7 +11,7 @@ Munros.prototype.bindEvents = function () {
     this.munroData = data;
     PubSub.publish("Munros:munro-data-ready", data);
     const regions = this.getRegions();
-    PubSub.publish("Munros:regions_data", regions)
+    PubSub.publish("Munros:regions_data", regions);
   });
 };
 

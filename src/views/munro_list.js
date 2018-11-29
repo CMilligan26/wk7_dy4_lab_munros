@@ -11,12 +11,12 @@ MunroList.prototype.bindEvents = function () {
     this.munros = data.detail;
     this.clearMunros();
     this.createMunros(this.munros);
-  })
+  });
   PubSub.subscribe("SelectView:selected-region", (region) => {
     this.clearMunros();
     const munrosByRegion = this.munros.filter(munro => munro.region === region.detail);
     this.createMunros(munrosByRegion);
-  })
+  });
 };
 
 MunroList.prototype.clearMunros = function () {
@@ -26,9 +26,10 @@ MunroList.prototype.clearMunros = function () {
 MunroList.prototype.createMunros = function (array) {
   for (const munro of array) {
     const div = document.createElement('div');
+    div.className = "munro";
     const munroData = new MunroData();
     munroData.displayData(div, munro);
-    this.container.appendChild(div)
+    this.container.appendChild(div);
   }
 };
 
