@@ -6,7 +6,18 @@ const Munros = function () {
 }
 
 Munros.prototype.bindEvents = function () {
-  const requestHelper = new RequestHelper();
-  this.munroData = requestHelper.get('https://munroapi.herokuapp.com/api/munros');
-  PubSub.publish("Munros:munro-data-ready", this.munroData);
+  const requestHelper = new RequestHelper("https://munroapi.herokuapp.com/api/munros");
+  requestHelper.get().then((data) => {
+    this.munroData = data;
+    PubSub.publish("Munros:munro-data-ready", data);
+    const regions = this.getRegions();
+    PubSub.publish("Munros:regions_data", regions)
+  });
 };
+
+Munros.prototype.getRegions = function () {
+  const regions = this.munroData.map(munro => munro.region).filter((region, index, regions) => regions.indexOf(region) === index);
+  return regions;
+};
+
+module.exports = Munros;
